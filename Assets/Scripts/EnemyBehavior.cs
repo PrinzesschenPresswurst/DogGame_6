@@ -7,7 +7,7 @@ using Random = UnityEngine.Random;
 public class EnemyBehavior : MonoBehaviour
 {
     [SerializeField] private float enemyMoveSpeed = 3f;
-    [SerializeField] private float enemyDestroyDistance = -6f;
+    [SerializeField] private float enemyDestroyDistance = -4f;
     [SerializeField] private float respawnPositionY = 7f;
  
     private void Update()
@@ -26,7 +26,7 @@ public class EnemyBehavior : MonoBehaviour
     {
         if (transform.position.y < enemyDestroyDistance)
         {
-            float respawnPositionX = Random.Range(-8f, 8f);
+            float respawnPositionX = Random.Range(-6f, 6f);
             transform.position = new Vector3(respawnPositionX, respawnPositionY, 0);
         }
     }

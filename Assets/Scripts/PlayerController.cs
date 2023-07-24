@@ -24,18 +24,18 @@ public class PlayerController : MonoBehaviour
         float moveFactor = moveSpeed * Time.deltaTime;
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
-
+        
         transform.Translate(new Vector3(horizontalInput,verticalInput,0) * moveFactor);
     }
 
     private void ClampHorizontalMovement()
     {
-        transform.position = new Vector3(transform.position.x, Math.Clamp(transform.position.y, -4,6), 0);
+        transform.position = new Vector3(transform.position.x, Math.Clamp(transform.position.y, -3,5), 0);
     }
 
     private void WrapVerticalMovement()
     {
-        float boundX = 11.3f;
+        float boundX = 8.5f;
         
         if (transform.position.x >= boundX)
         {

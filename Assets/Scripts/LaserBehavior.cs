@@ -5,7 +5,7 @@ using UnityEngine;
 public class LaserBehavior : MonoBehaviour
 {
     [SerializeField] private float laserMoveSpeed = 10f;
-    [SerializeField] private float destructionDistanceY = 7f;
+    [SerializeField] private float destructionDistanceY = 6.1f;
 
     void Update()
     {
@@ -23,6 +23,11 @@ public class LaserBehavior : MonoBehaviour
     {
         if (transform.position.y >= destructionDistanceY)
         {
+            if (transform.parent != null)
+            {
+                Destroy(transform.parent.gameObject);
+            }
+            
             Destroy(this.gameObject);
         }
     }

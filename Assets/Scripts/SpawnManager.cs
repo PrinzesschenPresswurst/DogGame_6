@@ -7,27 +7,43 @@ public class SpawnManager : MonoBehaviour
 {
     [SerializeField] private GameObject enemyPrefab;
     [SerializeField] private GameObject enemyContainer;
-    [SerializeField] private float respawnTimerMin = 1f;
-    [SerializeField] private float respawnTimerMax = 5f;
+    [SerializeField] private float enemyRespawnTimerMin = 1f;
+    [SerializeField] private float enemyRespawnTimerMax = 5f;
+    [SerializeField] private GameObject tripleShotPrefab;
+    [SerializeField] private float tripleShotRespawnTimerMin = 5f;
+    [SerializeField] private float tripleShotRespawnTimerMax = 10f;
+    [SerializeField] private GameObject powerUpContainer;
 
     private bool isSpawning = true;
 
     void Start()
     {
-        StartCoroutine(SpawnEnemies());
+        StartCoroutine(SpawnEnemy());
+        StartCoroutine(SpawnPowerUp());
     }
 
-    IEnumerator SpawnEnemies()
+    IEnumerator SpawnEnemy()
     {
         while (isSpawning)
         {
-            Vector3 spawnPosition = new Vector3(Random.Range(-9f, 9f), 8f, 0f);
-            GameObject newEnemy = Instantiate(enemyPrefab, spawnPosition, Quaternion.identity);
+            Vector3 enemySpawnPosition = new Vector3(Random.Range(-6f, 6f), 7f, 0f);
+            GameObject newEnemy = Instantiate(enemyPrefab, enemySpawnPosition, Quaternion.identity);
             newEnemy.transform.SetParent(enemyContainer.transform);
-            yield return new WaitForSeconds(Random.Range(respawnTimerMin,respawnTimerMax));
+            yield return new WaitForSeconds(Random.Range(enemyRespawnTimerMin,enemyRespawnTimerMax));
         }
     }
 
+    IEnumerator SpawnPowerUp()
+    {
+        while (isSpawning)
+        {
+            yield return new WaitForSeconds(Random.Range(tripleShotRespawnTimerMin,tripleShotRespawnTimerMax));
+            Vector3 powerUpSpawnPosition = new Vector3(Random.Range(-6f, 6f), Random.Range(-2f, 4f), 0f);
+            GameObject newTripleShot = Instantiate(tripleShotPrefab, powerUpSpawnPosition, Quaternion.identity);
+            newTripleShot.transform.SetParent(powerUpContainer.transform);
+        }
+    }
+    
     public void OnPlayerDeath()
     {
         isSpawning = false;
