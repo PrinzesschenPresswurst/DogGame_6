@@ -14,12 +14,12 @@ public class PlayerLife : MonoBehaviour
     [SerializeField] private Image life2Image;
     [SerializeField] private Image life3Image;
     private SpawnManager _spawnManager;
-    private Renderer _renderer;
+    private MeshRenderer _renderer;
 
     private void Start()
     {
         _spawnManager = FindObjectOfType<SpawnManager>();
-        _renderer = GetComponent<Renderer>();
+        _renderer = GetComponent<MeshRenderer>();
     }
 
     public void Damage()
@@ -53,12 +53,12 @@ public class PlayerLife : MonoBehaviour
         }
     }
 
-    IEnumerator CrashFeedback()
+    private IEnumerator CrashFeedback()
     {
         for (int i = 0; i < 1; i++)
         {
             _renderer.material = crashMaterial;
-            yield return new WaitForSeconds(0.2f);
+            yield return new WaitForSeconds(0.1f);
             _renderer.material = defaultMaterial;
         }
     }

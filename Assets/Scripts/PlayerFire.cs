@@ -1,55 +1,56 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerFire : MonoBehaviour
 {
-    [SerializeField] private GameObject laserProjectile;
-    [SerializeField] private GameObject tripleShot;
-    [SerializeField] private Vector3 spawnOffset = new Vector3(0,0.8f,0);
+    [Header ("General")]
     [SerializeField] private float spawnLaserCooldown = 0.3f;
     private float _nextLaserAvailable = 0f;
+
+    [Header ("laserProjectile")]
+    [SerializeField] private GameObject laserProjectile;
+    
+    [Header ("tripleShot")]
+    [SerializeField] private GameObject tripleShot;
+    [SerializeField] private float tripleShotDuration = 5f;
+    [SerializeField] private GameObject tripleShotCannons;
     private bool _tripleShotActive = false;
-    [SerializeField] private float _tripleShotDuration = 5f;
 
     private void Update()
     {
-        if (!_tripleShotActive)
-        {
-            SpawnLaser();
-        }
-        else if (_tripleShotActive)
-        {
-            SpawnTripleShot();
-        }
-    }
-
-    private void SpawnLaser()
-    {
         if (Input.GetKeyDown(KeyCode.Space) && Time.time > _nextLaserAvailable)
         {
             _nextLaserAvailable = Time.time + spawnLaserCooldown;
-            Instantiate(laserProjectile, transform.position + spawnOffset ,Quaternion.identity);
-        } 
+            DecideProjectile();
+        }
     }
-
-    private void SpawnTripleShot()
+    
+    private void DecideProjectile()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && Time.time > _nextLaserAvailable)
+        if (_tripleShotActive)
         {
-            _nextLaserAvailable = Time.time + spawnLaserCooldown;
             Instantiate(tripleShot, transform.position ,Quaternion.identity);
-        } 
+        }
+        else 
+        {
+            Vector3 spawnOffset = new Vector3(0,0.8f,0);
+            Instantiate(laserProjectile, transform.position + spawnOffset ,Quaternion.identity);
+        }
     }
-
+    
     public void OnTripleShotCollect()
     {
         _tripleShotActive = true;
-        Invoke("ResetTripleShot",_tripleShotDuration);
+        tripleShotCannons.SetActive(true);
+        Invoke("ResetTripleShot",tripleShotDuration);
     }
 
     private void ResetTripleShot()
     {
         _tripleShotActive = false;
+        tripleShotCannons.SetActive(false);
     }
+    
 }

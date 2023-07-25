@@ -9,10 +9,10 @@ public class SpawnManager : MonoBehaviour
     [SerializeField] private GameObject enemyContainer;
     [SerializeField] private float enemyRespawnTimerMin = 1f;
     [SerializeField] private float enemyRespawnTimerMax = 5f;
-    [SerializeField] private GameObject tripleShotPrefab;
+    //[SerializeField] private GameObject tripleShotPowerUpPrefab;
     [SerializeField] private float tripleShotRespawnTimerMin = 5f;
     [SerializeField] private float tripleShotRespawnTimerMax = 10f;
-    [SerializeField] private GameObject powerUpContainer;
+    [SerializeField] private List<GameObject> powerUpPrefabs;
 
     private bool isSpawning = true;
 
@@ -38,12 +38,12 @@ public class SpawnManager : MonoBehaviour
         while (isSpawning)
         {
             yield return new WaitForSeconds(Random.Range(tripleShotRespawnTimerMin,tripleShotRespawnTimerMax));
+            GameObject powerUp = powerUpPrefabs[Random.Range(0,powerUpPrefabs.Count)];
             Vector3 powerUpSpawnPosition = new Vector3(Random.Range(-6f, 6f), Random.Range(-2f, 4f), 0f);
-            GameObject newTripleShot = Instantiate(tripleShotPrefab, powerUpSpawnPosition, Quaternion.identity);
-            newTripleShot.transform.SetParent(powerUpContainer.transform);
+            Instantiate(powerUp, powerUpSpawnPosition, Quaternion.identity);
         }
     }
-    
+
     public void OnPlayerDeath()
     {
         isSpawning = false;

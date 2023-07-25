@@ -2,14 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TripleShotBehavior : MonoBehaviour
+public class PowerUpBehavior : MonoBehaviour
 {
-    [SerializeField] private float tripleShotLifetime = 3f;
-    void Start()
-    {
-        Invoke("SelfDestruct",tripleShotLifetime);
-    }
+    [SerializeField] private float powerUpLifetime = 3f;
 
+    void Start()
+    { 
+        Invoke("SelfDestruct",powerUpLifetime);
+    }
+    
     private void SelfDestruct()
     {
         Destroy(this.gameObject);

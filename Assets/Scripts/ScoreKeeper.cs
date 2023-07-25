@@ -18,4 +18,10 @@ public class ScoreKeeper : MonoBehaviour
         _score++;
         scoreText.text = "Score:" +_score *100;
     }
+
+    public void OnScorePowerUpCollect()
+    {
+        _score = _score + 5;
+        scoreText.text = "Score:" +_score *100;
+    }
 }
