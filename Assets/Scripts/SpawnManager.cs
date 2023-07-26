@@ -38,12 +38,13 @@ public class SpawnManager : MonoBehaviour
         while (isSpawning)
         {
             yield return new WaitForSeconds(Random.Range(tripleShotRespawnTimerMin,tripleShotRespawnTimerMax));
-            GameObject powerUp = powerUpPrefabs[Random.Range(0,powerUpPrefabs.Count)];
             Vector3 powerUpSpawnPosition = new Vector3(Random.Range(-6f, 6f), Random.Range(-2f, 4f), 0f);
+            GameObject powerUp = powerUpPrefabs[Random.Range(0,powerUpPrefabs.Count)];
             Instantiate(powerUp, powerUpSpawnPosition, Quaternion.identity);
         }
     }
 
+    
     public void OnPlayerDeath()
     {
         isSpawning = false;

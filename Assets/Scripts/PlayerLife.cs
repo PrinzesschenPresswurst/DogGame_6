@@ -55,11 +55,8 @@ public class PlayerLife : MonoBehaviour
 
     private IEnumerator CrashFeedback()
     {
-        for (int i = 0; i < 1; i++)
-        {
-            _renderer.material = crashMaterial;
-            yield return new WaitForSeconds(0.1f);
-            _renderer.material = defaultMaterial;
-        }
+        _renderer.material = crashMaterial;
+        yield return new WaitForSeconds(0.1f);
+        _renderer.material = defaultMaterial;
     }
 }

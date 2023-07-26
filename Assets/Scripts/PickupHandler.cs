@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class PickupHandler : MonoBehaviour
 {
-    [SerializeField] AudioClip powerUpCollect; //TODO
+    [SerializeField] private AudioClip powerUpCollect; 
     private AudioSource _audioSource;
     private PlayerFire _playerFire;
     private PlayerController _playerController;
@@ -21,27 +21,23 @@ public class PickupHandler : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        switch (other.tag)
+        if (other.CompareTag("Enemy")==false)
         {
-            case "PowerUp_TripleShot":
-                _playerFire.OnTripleShotCollect();
-                _audioSource.PlayOneShot(powerUpCollect);
-                Destroy(other.gameObject);
-                break;
-            case "PowerUp_Speed": //<<-TODO make this into fire rate cause its lame 
-                _playerController.OnSpeedPowerUpCollect();
-                _audioSource.PlayOneShot(powerUpCollect);
-                Destroy(other.gameObject);
-                break;
-            case "PowerUp_Score":
-                _scoreKeeper.OnScorePowerUpCollect();
-                _audioSource.PlayOneShot(powerUpCollect);
-                Destroy(other.gameObject);
-                break;
-            //TODO add health powerup
-            default:
-                Debug.Log("unhandled coll");
-                break;
+            switch (other.tag)
+            {
+                case "PowerUp_TripleShot":
+                    _playerFire.OnTripleShotCollect();
+                    break;
+                case "PowerUp_Speed": //<<-TODO make this into fire rate cause its lame 
+                    _playerController.OnSpeedPowerUpCollect();
+                    break;
+                case "PowerUp_Score":
+                    _scoreKeeper.OnScorePowerUpCollect();
+                    break;
+                //TODO add health powerup
+            }
+            _audioSource.PlayOneShot(powerUpCollect);
+            Destroy(other.gameObject);
         }
     }
 }

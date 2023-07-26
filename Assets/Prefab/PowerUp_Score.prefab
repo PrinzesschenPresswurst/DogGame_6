@@ -27,7 +27,7 @@ RectTransform:
   m_GameObject: {fileID: 933526731014469499}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -0.5001}
-  m_LocalScale: {x: 1, y: 4, z: 1}
+  m_LocalScale: {x: 1, y: 3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2108173679061041950}
@@ -109,8 +109,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190080
-  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -163,7 +163,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 9.502743, y: 2.2991252, z: 9.499605, w: 2.451838}
+  m_margin: {x: 9.502743, y: 2.2337751, z: 9.499605, w: 2.4376616}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   _SortingLayer: 0
@@ -186,7 +186,6 @@ GameObject:
   - component: {fileID: 876918280003148020}
   - component: {fileID: 7699702612757360266}
   - component: {fileID: 5328002420088738196}
-  - component: {fileID: 5332452290622228418}
   m_Layer: 0
   m_Name: PowerUp_Score
   m_TagString: PowerUp_Score
@@ -203,12 +202,12 @@ Transform:
   m_GameObject: {fileID: 5472043832500475300}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -3.08, y: 1.37, z: 0}
-  m_LocalScale: {x: 1, y: 0.4, z: 0.5}
+  m_LocalScale: {x: 1, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 383166185126753685}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1852928842430025045
 MeshFilter:
@@ -293,7 +292,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad51a900ff0c90b49b26da85592a2061, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tripleShotLifetime: 3
+  powerUpLifetime: 3
 --- !u!54 &5328002420088738196
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -321,16 +320,3 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &5332452290622228418
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5472043832500475300}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ad51a900ff0c90b49b26da85592a2061, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tripleShotLifetime: 3

@@ -1470,8 +1470,8 @@ GameObject:
   - component: {fileID: 1947341204}
   - component: {fileID: 1947341205}
   - component: {fileID: 1947341206}
-  - component: {fileID: 1947341208}
   - component: {fileID: 1947341207}
+  - component: {fileID: 1947341208}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1617,7 +1617,20 @@ MonoBehaviour:
   life1Image: {fileID: 1425687889}
   life2Image: {fileID: 1701218293}
   life3Image: {fileID: 142026576}
---- !u!82 &1947341207
+--- !u!114 &1947341207
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1947341199}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c4de9d0bf74fe6438d3b1fa73f04e66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  powerUpCollect: {fileID: 8300000, guid: cf2948d3e369d3b44932ac01c0942f43, type: 3}
+--- !u!82 &1947341208
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1629,7 +1642,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 0.5
+  m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -1713,19 +1726,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &1947341208
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1947341199}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9c4de9d0bf74fe6438d3b1fa73f04e66, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  powerUpCollect: {fileID: 8300000, guid: cf2948d3e369d3b44932ac01c0942f43, type: 3}
 --- !u!1 &1968785187
 GameObject:
   m_ObjectHideFlags: 0
