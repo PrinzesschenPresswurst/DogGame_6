@@ -5,13 +5,15 @@ using UnityEngine.UIElements;
 
 public class SpawnManager : MonoBehaviour
 {
+    [Header ("Enemy Spawns")]
     [SerializeField] private GameObject enemyPrefab;
     [SerializeField] private GameObject enemyContainer;
     [SerializeField] private float enemyRespawnTimerMin = 1f;
     [SerializeField] private float enemyRespawnTimerMax = 5f;
-    //[SerializeField] private GameObject tripleShotPowerUpPrefab;
-    [SerializeField] private float tripleShotRespawnTimerMin = 5f;
-    [SerializeField] private float tripleShotRespawnTimerMax = 10f;
+    
+    [Header ("PowerUp Spawns")]
+    [SerializeField] private float powerUpRespawnTimerMin = 5f;
+    [SerializeField] private float powerUpRespawnTimerMax = 10f;
     [SerializeField] private List<GameObject> powerUpPrefabs;
 
     private bool isSpawning = true;
@@ -37,7 +39,7 @@ public class SpawnManager : MonoBehaviour
     {
         while (isSpawning)
         {
-            yield return new WaitForSeconds(Random.Range(tripleShotRespawnTimerMin,tripleShotRespawnTimerMax));
+            yield return new WaitForSeconds(Random.Range(powerUpRespawnTimerMin,powerUpRespawnTimerMax));
             Vector3 powerUpSpawnPosition = new Vector3(Random.Range(-6f, 6f), Random.Range(-2f, 4f), 0f);
             GameObject powerUp = powerUpPrefabs[Random.Range(0,powerUpPrefabs.Count)];
             Instantiate(powerUp, powerUpSpawnPosition, Quaternion.identity);

@@ -1,12 +1,15 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SocialPlatforms.Impl;
 
 public class EnemyCollisionHandler : MonoBehaviour
 {
     private ScoreKeeper _scoreKeeper;
+    private PlayerLife _playerLife;
+    
 
     private void Start()
     {
@@ -15,22 +18,24 @@ public class EnemyCollisionHandler : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        _playerLife = other.GetComponent<PlayerLife>();
+        switch (other.tag)
         {
-            PlayerLife playerLife = other.GetComponent<PlayerLife>();
-            if (playerLife != null)
-            {
-                playerLife.Damage();
-            }
+            case "Player": 
+                _playerLife.Damage();
+                Destroy(this.gameObject);
+                break;
             
-            Destroy(this.gameObject);
-        }
-        
-        else if (other.CompareTag("Laser"))
-        {
-            _scoreKeeper.UpdateScore();
-            Destroy(other.gameObject);
-            Destroy(this.gameObject);
+            case "Player_Shield": 
+                _scoreKeeper.UpdateScore(); 
+                Destroy(this.gameObject);
+                break;
+            
+            case "Laser": 
+                _scoreKeeper.UpdateScore(); 
+                Destroy(other.gameObject); 
+                Destroy(this.gameObject);
+                break;
         }
     }
 }

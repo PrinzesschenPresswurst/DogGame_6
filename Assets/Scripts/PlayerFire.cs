@@ -18,6 +18,11 @@ public class PlayerFire : MonoBehaviour
     [SerializeField] private GameObject tripleShotCannons;
     private bool _tripleShotActive = false;
 
+    private void Start()
+    {
+        tripleShotCannons.SetActive(false);
+    }
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space) && Time.time > _nextLaserAvailable)

@@ -10,13 +10,18 @@ public class PickupHandler : MonoBehaviour
     private PlayerFire _playerFire;
     private PlayerController _playerController;
     private ScoreKeeper _scoreKeeper;
+    private PlayerLife _playerLife;
+    private PlayerShieldController _playerShieldController;
+    
 
     private void Start()
     {
         _playerFire = GetComponent<PlayerFire>();
         _playerController = GetComponent<PlayerController>();
+        _playerLife = GetComponent<PlayerLife>();
         _scoreKeeper = FindObjectOfType<ScoreKeeper>();
         _audioSource = GetComponent<AudioSource>();
+        _playerShieldController = GetComponent<PlayerShieldController>();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -34,7 +39,13 @@ public class PickupHandler : MonoBehaviour
                 case "PowerUp_Score":
                     _scoreKeeper.OnScorePowerUpCollect();
                     break;
-                //TODO add health powerup
+                case "PowerUp_Life":
+                    _playerLife.OnHealthCollected();
+                    break;
+                case "PowerUp_Shield":
+                    _playerShieldController.OnShieldCollected();
+                    Debug.Log("collided with shield pickup");
+                    break;
             }
             _audioSource.PlayOneShot(powerUpCollect);
             Destroy(other.gameObject);

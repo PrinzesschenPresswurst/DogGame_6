@@ -9,6 +9,9 @@ TagManager:
   - PowerUp_TripleShot
   - PowerUp_Speed
   - PowerUp_Score
+  - PowerUp_Life
+  - PowerUp_Shield
+  - Player_Shield
   layers:
   - Default
   - TransparentFX
