@@ -1210,10 +1210,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2dc401b66a86f14d87a9b54c553f4ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyPrefab: {fileID: 7581594665520352637, guid: 56f2c4a6259ee55468643d61edf23364, type: 3}
   enemyContainer: {fileID: 845826332}
   enemyRespawnTimerMin: 1
   enemyRespawnTimerMax: 3
+  enemyPrefabs:
+  - {fileID: 7581594665520352637, guid: 56f2c4a6259ee55468643d61edf23364, type: 3}
+  - {fileID: 6937567966438205450, guid: 6ccae0846fc509b4790791a306f036ee, type: 3}
   powerUpRespawnTimerMin: 1
   powerUpRespawnTimerMax: 2
   powerUpPrefabs:
@@ -1881,7 +1883,7 @@ Transform:
   m_GameObject: {fileID: 1258017255}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 2.5, y: 2.5, z: 2.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1947341203}
@@ -2543,8 +2545,8 @@ GameObject:
   - component: {fileID: 1947341205}
   - component: {fileID: 1947341206}
   - component: {fileID: 1947341207}
-  - component: {fileID: 1947341208}
   - component: {fileID: 1947341209}
+  - component: {fileID: 1947341208}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -2653,7 +2655,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e6c13fbe97f97b4d92ec0fff476222e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 7
+  moveSpeed: 10
   speedPowerUpDuration: 3
   speedPowerUpModifier: 5
 --- !u!114 &1947341205
@@ -2668,11 +2670,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ae177ea2a5d7b240b7373d195a9d8ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnLaserCooldown: 0.2
+  spawnLaserCooldown: 0.4
   laserProjectile: {fileID: 8723295502017882927, guid: 72af9fcb3143f1e48afdc3c7998b8b2c, type: 3}
   tripleShot: {fileID: 4507565646508723351, guid: 4d47e60cd20e0584295e138cfcc6a73b, type: 3}
   tripleShotDuration: 5
   tripleShotCannons: {fileID: 1155973263}
+  laserSpeedPowerUpModifier: 0.1
+  laserSpeedPowerUpDuration: 5
 --- !u!114 &1947341206
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2814,7 +2818,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shield: {fileID: 1258017255}
-  shieldDuration: 5
 --- !u!1 &1968785187
 GameObject:
   m_ObjectHideFlags: 0

@@ -17,27 +17,27 @@ public class ScoreKeeper : MonoBehaviour
 
     public void UpdateScore()
     {
-        _score++;
-        scoreText.text = "Score:" +_score *100;
+        _score = _score +100;
+        scoreText.text = "Score:" +_score;
     }
 
     public void OnScorePowerUpCollect()
     {
-        _score = _score + 5;
-        scoreText.text = "Score:" +_score *100;
+        _score = _score + 500;
+        scoreText.text = "Score:" +_score;
     }
 
     public void UpdateEndScore()
     {
-        endScreenScoreText.text = "Your score was: " + _score * 100;
+        endScreenScoreText.text = "Your score was: " + _score;
         int highScore = PlayerPrefs.GetInt("Highscore");
 
         if (highScore < _score)
         {
-            PlayerPrefs.SetInt("Highscore", _score * 100);
-            PlayerPrefs.Save();
-            highScoreText.text = "WOW you broke the previous highscore of " + highScore;
+            highScoreText.text = "WOW NEW HIGHSCORE! You broke the previous highscore of " + highScore;
             highScoreText.color = Color.green;
+            PlayerPrefs.SetInt("Highscore", _score);
+            PlayerPrefs.Save();
         }
         
         else if (highScore >= _score)

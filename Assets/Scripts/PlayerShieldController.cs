@@ -6,7 +6,6 @@ using UnityEngine;
 public class PlayerShieldController : MonoBehaviour
 {
     [SerializeField] private GameObject shield;
-    [SerializeField] private float shieldDuration = 5f;
     private MeshRenderer _meshRenderer;
     private Collider _collider;
 
@@ -22,10 +21,9 @@ public class PlayerShieldController : MonoBehaviour
     {
         _meshRenderer.enabled = true;
         _collider.enabled = true;
-        Invoke("ShieldPowerUpReset",shieldDuration);
     }
 
-    private void ShieldPowerUpReset()
+    public void RemoveShield()
     {
         _meshRenderer.enabled = false;
         _collider.enabled = false;

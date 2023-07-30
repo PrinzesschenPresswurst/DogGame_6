@@ -12,11 +12,17 @@ public class PlayerFire : MonoBehaviour
     [Header ("laserProjectile")]
     [SerializeField] private GameObject laserProjectile;
     
-    [Header ("tripleShot")]
+    [Header ("tripleShot PowerUp")]
     [SerializeField] private GameObject tripleShot;
     [SerializeField] private float tripleShotDuration = 5f;
     [SerializeField] private GameObject tripleShotCannons;
     private bool _tripleShotActive = false;
+    private float _defaultLaserCooldown;
+    
+    [Header("laserSpeed PowerUp")]
+    [SerializeField] private float laserSpeedPowerUpModifier = 5f;
+    [SerializeField] private float laserSpeedPowerUpDuration = 5f;
+    private bool _powerUpWasCollected = false;
 
     private void Start()
     {
@@ -56,6 +62,24 @@ public class PlayerFire : MonoBehaviour
     {
         _tripleShotActive = false;
         tripleShotCannons.SetActive(false);
+    }
+
+    public void OnSpeedPowerUpCollected()
+    {
+        StartCoroutine(SpeedPowerUp());
+    }
+
+    IEnumerator SpeedPowerUp()
+    {
+        if (!_powerUpWasCollected)
+        {
+            _powerUpWasCollected = true;
+            _defaultLaserCooldown = spawnLaserCooldown;
+            spawnLaserCooldown = laserSpeedPowerUpModifier;
+            yield return new WaitForSeconds(laserSpeedPowerUpDuration);
+            spawnLaserCooldown = _defaultLaserCooldown;
+            _powerUpWasCollected = false;
+        }
     }
     
 }

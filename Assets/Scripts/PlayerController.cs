@@ -8,7 +8,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float moveSpeed = 10f;
     [SerializeField] private float speedPowerUpDuration = 3f;
     [SerializeField] private float speedPowerUpModifier = 5f;
-    private float _defaultMoveSpeed;
 
     private void Start()
     {
@@ -49,19 +48,4 @@ public class PlayerController : MonoBehaviour
             transform.position = new Vector3(boundX, transform.position.y, 0);
         }
     }
-
-    public void OnSpeedPowerUpCollect()
-    {
-        StartCoroutine(SpeedPowerUpActive());
-    }
-    
-
-    IEnumerator SpeedPowerUpActive()
-    {
-        _defaultMoveSpeed = moveSpeed;
-        moveSpeed = moveSpeed + speedPowerUpModifier;
-        yield return new WaitForSeconds(speedPowerUpDuration);
-        moveSpeed = _defaultMoveSpeed;
-    }
-
 }
